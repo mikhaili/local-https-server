@@ -1,0 +1,39 @@
+{
+  "seatbid": {
+    "bid": [],
+    "ext": {
+      "requestID": "d9fdf310-acbb-11e7-af06-b3f802dfb691",
+      "numOfBannersToCache": 1,
+      "numOfBannersToInitSuccess": 1,
+      "landingId": 1470,
+      "strategyId": 102,
+      "refreshInterval": 30,
+      "purgeCacheOnInit": false,
+      "allowMultiInitCalls": false,
+      "openLandingPageInExtBrowser": false,
+      "pagination": true,
+      "labels": {
+        "confirmCloseMsg": {
+          "during": {
+            "close": "No rewards earned yet! Complete video to earn rewards",
+            "yes": "Stop",
+            "no": "Resume"
+          },
+          "after": {
+            "close": "Want to earn more free Points?",
+            "yes": "No Thanks",
+            "no": "Earn More"
+          }
+        },
+        "next": "Next",
+        "noInternet": "No internet connection. Please connect and try again.",
+        "noOffers": "There are currently no videos available. Please try again later."
+      },
+      "filterAppsInstalled": true,
+      "immersive": true,
+      "vastAvailabilityValidation": true,
+      "reportOnAdunitReady": false,
+      "deviceType": "tablet"
+    }
+  }
+}
