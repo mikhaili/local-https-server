@@ -1,3 +1,5 @@
 export {promisify} from 'util'
-export {getLocalIP} from './get-local-ip';
+export {format} from 'util'
+export {ipAddress} from './ip-address';
+export {homeDir} from './home-dir';
 export {isExists} from './file';
