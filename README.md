@@ -1,7 +1,9 @@
-HTTPS-SERVER with jsonp support
+# local-https-server
 
-*Prerequisites*
+local https-server with jsonp support
 
-# brew install mkcert (https://github.com/FiloSottile/mkcert)
-# npm install - will install server dependencies
-# npm start - will start local https server
+## Prerequisites
+
+  - brew install mkcert (https://github.com/FiloSottile/mkcert)
+  - npm install - will install server dependencies
+  - npm start - will start local https server
