@@ -1,36 +1,30 @@
 import {HttpsServer, ServerConfig, ServerConfigBuilder} from "./https-server";
-import {format, homeDir, ipAddress} from "../utils";
+import {format, ipAddress, homedir} from "../utils/";
 import {Certificate} from "./certificate";
-
+import {globalConfig} from "../config/"
 
 async function main() {
-  const certKeyFileTemplate = '%s-key.pem'
-  const certFileTemplate = '%s.pem'
-  const certDirectory = homeDir() + '/cert'
+  const httpsServerConfig = globalConfig.httpsServerConfig
 
-  const localIP = ipAddress()
+  const localIP = ipAddress();
+  const {cert} = httpsServerConfig;
 
   const certificate: Certificate = new Certificate(
-    format(certFileTemplate, localIP),
-    format(certKeyFileTemplate, localIP),
-    certDirectory
+    format(cert.fileTemplate, localIP),
+    format(cert.keyFileTemplate, localIP),
+    format(cert.directory, homedir())
   );
 
   if (!certificate.isExists()) {
+    console.info('Creating new certificate ...')
     await certificate.create(localIP)
   }
 
-  const serverConfig = {
-    root: '../',
-    port: 8001,
-    proxy: 'http://localhost:3000'
-  }
-
-  const config: ServerConfig = new ServerConfigBuilder(serverConfig.root)
+  const config: ServerConfig = new ServerConfigBuilder(httpsServerConfig.root)
     .setCertificate(certificate)
-    .setPort(serverConfig.port)
-    .setProxy(serverConfig.proxy)
-    .build()
+    .setPort(httpsServerConfig.port)
+    .setProxy(httpsServerConfig.proxy)
+    .build();
 
   const server: HttpsServer = new HttpsServer(config);
   await server.start();
@@ -38,6 +32,6 @@ async function main() {
 
 main()
   .catch(reason => {
-    console.log('FAILED')
-    console.log(reason)
+    console.log('FAILED');
+    console.log(reason);
   });

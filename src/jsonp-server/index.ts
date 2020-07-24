@@ -1,8 +1,8 @@
 import * as fastify from 'fastify'
 import {IncomingMessage, Server, ServerResponse} from 'http'
 import * as fs from "fs";
-
-import {promisify} from '../utils';
+import {promisify} from '../utils/';
+import {globalConfig} from "../config/";
 
 // Create a http server. We pass the relevant typings for our http version used.
 // By passing types we get correctly typed access to the underlying http objects in routes.
@@ -24,6 +24,7 @@ const opts: fastify.RouteShorthandOptions = {
     }
   }
 }
+const jsonpServerConfig = globalConfig.jsonpServerConfig
 
 server.get('/ping', opts, (request, reply) => {
   reply
@@ -56,7 +57,7 @@ server.get('/request', opts, async (request, reply) => {
 // @ts-ignore
 const start = async () => {
   try {
-    await server.listen(3000, "0.0.0.0");
+    await server.listen(jsonpServerConfig.port, jsonpServerConfig.address);
   } catch (err) {
     console.log(err);
     server.log.error(err);

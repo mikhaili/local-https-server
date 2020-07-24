@@ -80,14 +80,15 @@ export class HttpsServer {
   }
 
   async start() {
+    console.log(__dirname);
     const args = [
       `${this.root}`,
       '-p', `${this.port}`,
       '--cors=*',
       '--ssl', '--cert', `${this.certFilePath}`, '--key', `${this.keyFilePath}`,
-      `-P ${this.proxy}`
+      '-P', `${this.proxy}`
     ];
-    const httpServer = './node_modules/.bin/http-server'
+    const httpServer = 'http-server'
     spawn(httpServer, args, {stdio: 'inherit'})
   }
 
