@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^3.0.2",
+    "fastify": "^3.29.4",
     "find-config": "^1.0.0"
   },
   "devDependencies": {
